@@ -16,7 +16,6 @@ def createFilters(filters):
                 
         endpoint = "" if not release_year else "&"+release_year
         filters.pop('release_year')
-        print(filters)
         for key,value in filters.items():
                value = value.replace(' ', '%20') 
                endpoint += "&"+key+"="+value
