@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from utils.createFilters import *
+from utils.manipulateMovieData import *
 #import pandas as pdp
 
 headers = {
@@ -21,9 +22,17 @@ print(IMDB_URL+searchFilters)
 BASE_SELECTOR = "sc-f24f1c5c-3"
 items = soup.find_all('div', class_=BASE_SELECTOR)
 
-data = []
-#All the info we need are present in the <img> tag.
-print(items[1].find('img').get('alt'))
+manipulated_data = []
 
+#All the info we need is present in the <img> tag.
+for item in items:
+    data = item.find('img').get('alt')
+    picture_url = item.find('img').get('src')
+    players,title,year = manipulateMovieData(data)
+    # print(players,title,year, picture_url)
+    manipulated_data.append({"players": players, "title": title, "year": year, "picture_url": picture_url})
+
+print(manipulated_data)
+    
 
 
