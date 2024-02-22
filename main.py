@@ -1,29 +1,32 @@
 from tkinter import *
 from tkinter import ttk
 from src.scraper import Scraper
+from src.utils.winningMovie import find_winning_movie
 from PIL import Image, ImageTk
 from src.constants import *
 import requests
 import io
 
 table_data = None
+search_history = {}
 
 def search_button_click():
     global table_data
+    global search_history
     # Retrieve the values from the entry widgets
     title = title_var.get()
     release_year = release_year_var.get()
     genre = genre_var.get()
     actors = actors_var.get()
-    print(genre)
     table_data = scraper.title_scraper({
         TITLE: title,
         RELEASE_YEAR: release_year,
         GENRES: genre,
         ACTORS: actors
     })
-
     print(table_data)
+    winning_movie = find_winning_movie(table_data,search_history)
+    print(f'wiining movie is {winning_movie}')
     tree = ttk.Treeview(root)
 
     style = ttk.Style()
