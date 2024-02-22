@@ -16,11 +16,11 @@ class Scraper:
     '''
     This function create an endpoint with the search parameters entered by the user. 
     '''
-    def _createFilters(self,filters):        
+    def _create_filters(self,filters):        
             release_year = None
             role = None
             if filters[ACTORS] != "":
-                role = self.nameScraper(filters['role'])         
+                role = self.name_scraper(filters['role'])         
             if RELEASE_YEAR in filters:
                 release_year_filter = filters[RELEASE_YEAR]
                 release_year = f"release_date={release_year_filter}-01-01,{release_year_filter}-12-31"
@@ -33,18 +33,17 @@ class Scraper:
                 filters.pop('role')
             
             for key,value in filters.items():
-                print(key,value)
                 if value != "" and value != None:
                         value = value.replace(' ', '%20') 
                         endpoint += "&"+key+"="+value
 
             return endpoint
 
-    def titleScraper(self, filters={}):
+    def title_scraper(self, filters={}):
         # title_type added as we want to filter only the movies
         IMDB_URL = self.IMDB_URL+"title/?title_type=feature,tv_movie"
 
-        searchFilters = self._createFilters(filters)
+        searchFilters = self._create_filters(filters)
         page = requests.get(IMDB_URL+searchFilters, headers=self.headers, verify=False)
         soup = BeautifulSoup(page.content, 'html.parser')
 
@@ -52,7 +51,6 @@ class Scraper:
         items = soup.find_all('div', class_=BASE_SELECTOR)
 
         manipulated_data = []
-        print(IMDB_URL+searchFilters)
         #Most of the info we need is present in the <img> tag.
         for item in items:
             img_info = item.find('img')
@@ -64,7 +62,7 @@ class Scraper:
         
         return manipulated_data
 
-    def nameScraper(self, name):
+    def name_scraper(self, name):
         # title_type added as we want to filter only the movies
         IMDB_URL = self.IMDB_URL+f"name/?name={name}"
         page = requests.get(IMDB_URL, headers=self.headers, verify=False)

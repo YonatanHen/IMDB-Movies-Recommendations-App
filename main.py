@@ -16,7 +16,7 @@ def search_button_click():
     genre = genre_var.get()
     actors = actors_var.get()
 
-    table_data = scraper.titleScraper({
+    table_data = scraper.title_scraper({
         TITLE: title,
         RELEASE_YEAR: release_year,
         GENRES: genre,
