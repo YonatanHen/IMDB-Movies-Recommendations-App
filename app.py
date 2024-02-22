@@ -2,14 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 from utils.createFilters import *
 from utils.manipulateMovieData import *
-#import pandas as pdp
 
 headers = {
     'User-Agent': 
            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'
         }
-
-
 
 # title_type added as we want to filter only the movies
 IMDB_URL = "https://www.imdb.com/search/title/?title_type=feature,tv_movie"
