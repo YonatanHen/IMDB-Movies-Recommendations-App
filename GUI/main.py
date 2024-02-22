@@ -11,6 +11,7 @@ root.geometry("%dx%d" % (width, height))
 title_var = StringVar()
 year_var = IntVar(value=2024)
 genre_var = StringVar()
+actors_var = StringVar()
 
 frm = ttk.Frame(root, padding=15)
 frm.grid()
@@ -24,7 +25,10 @@ year_entry = ttk.Entry(frm,textvariable = year_var, font=('calibre',10,'normal')
 genre_label = ttk.Label(frm, text = 'Genre', font=('calibre',10, 'bold')).grid(column=4, row=1)
 genre_entry = ttk.Entry(frm,textvariable = genre_var, font=('calibre',10,'normal')).grid(column=5, row=1)
 
-ttk.Button(frm, text="Search").grid(column=6, row=1)
-ttk.Button(frm, text="Quit", command=root.destroy).grid(column=7, row=1)
+actors_label = ttk.Label(frm, text = 'Actors', font=('calibre',10, 'bold')).grid(column=6, row=1)
+actors_entry = ttk.Entry(frm,textvariable = actors_var, font=('calibre',10,'normal')).grid(column=7, row=1)
+
+ttk.Button(frm, text="Search").grid(column=8, row=1)
+ttk.Button(frm, text="Quit", command=root.destroy).grid(column=9, row=1)
 
 root.mainloop()

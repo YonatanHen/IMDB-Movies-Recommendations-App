@@ -1,5 +1,3 @@
-import re
-
 '''
 This function isolates the data of the movie to title, players, and year
 '''

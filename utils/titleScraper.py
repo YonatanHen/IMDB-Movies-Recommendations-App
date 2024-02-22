@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-from utils.createFilters import *
-from utils.manipulateMovieData import *
+from createFilters import *
+from manipulateMovieData import *
 
 headers = {
     'User-Agent': 
@@ -25,9 +25,8 @@ manipulated_data = []
 for item in items:
     data = item.find('img').get('alt')
     picture_url = item.find('img').get('src')
-    players,title,year = manipulateMovieData(data)
-    # print(players,title,year, picture_url)
-    manipulated_data.append({"players": players, "title": title, "year": year, "picture_url": picture_url})
+    actors,title,year = manipulateMovieData(data)
+    manipulated_data.append({"actors": actors, "title": title, "year": year, "picture_url": picture_url})
 
 print(manipulated_data)
     
