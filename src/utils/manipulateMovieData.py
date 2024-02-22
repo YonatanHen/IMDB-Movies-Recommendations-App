@@ -1,18 +1,19 @@
 '''
-This function isolates the data of the movie to title, players, and year
+This function isolates the data of the movie to title, actors, and year
 '''
 def manipulateMovieData(data):
-    if 'in' in data:
-        splited_data = data.split(' in ')
+    if ' in ' in data:
+        #rsplit will split the data by the last ' in '
+        splited_data = data.rsplit(' in ', 1)
         if ',' in splited_data[0]:
-            players = list(map(lambda player_name: player_name.strip(), splited_data[0].replace(' and ', ' ').split(',')))
+            actors = list(map(lambda player_name: player_name.strip(), splited_data[0].replace(' and ', ' ').split(',')))
         else:
-            players = list(map(lambda player_name: player_name.strip(), splited_data[0].split('and')))
+            actors = list(map(lambda player_name: player_name.strip(), splited_data[0].split('and')))
         title_and_year = splited_data[1]
     else:
         title_and_year = data
-        players = ""
+        actors = ""
     title = title_and_year[:-6].strip()
     year = title_and_year[-6:].replace('(', '').replace(')', '')
     
-    return players, title, year
+    return actors, title, year
