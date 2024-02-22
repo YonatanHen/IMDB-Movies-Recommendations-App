@@ -83,13 +83,13 @@ actors_var = StringVar()
 frm = ttk.Frame(root, padding=15)
 frm.grid()
 
-title_label = ttk.Label(frm, text = 'Title', font=('calibre',10, 'bold')).grid(column=0, row=1)
+title_label = ttk.Label(frm, text = 'Title:', font=('calibre',10, 'bold')).grid(column=0, row=1)
 title_entry = ttk.Entry(frm,textvariable = title_var, font=('calibre',10,'normal')).grid(column=1, row=1)
 
-release_year_label = ttk.Label(frm, text = 'Year', font=('calibre',10, 'bold')).grid(column=2, row=1)
+release_year_label = ttk.Label(frm, text = 'Year:', font=('calibre',10, 'bold')).grid(column=2, row=1)
 release_year_label = ttk.Entry(frm,textvariable = release_year_var, font=('calibre',10,'normal')).grid(column=3, row=1)
 
-genre_label = ttk.Label(frm, text = 'Genre', font=('calibre',10, 'bold')).grid(column=4, row=1)
+genre_label = ttk.Label(frm, text = 'Genre:', font=('calibre',10, 'bold')).grid(column=4, row=1)
 genre_entry = ttk.Combobox(
     frm,
     state="readonly",
@@ -98,7 +98,7 @@ genre_entry = ttk.Combobox(
 ).grid(column=5, row=1)
 #genre_entry = ttk.Entry(frm,textvariable = genre_var, font=('calibre',10,'normal')).grid(column=5, row=1)
 
-actor_label = ttk.Label(frm, text = 'Actor', font=('calibre',10, 'bold')).grid(column=6, row=1)
+actor_label = ttk.Label(frm, text = 'Actor:', font=('calibre',10, 'bold')).grid(column=6, row=1)
 actor_entry = ttk.Entry(frm,textvariable = actors_var, font=('calibre',10,'normal')).grid(column=7, row=1)
 
 scraper = Scraper()
