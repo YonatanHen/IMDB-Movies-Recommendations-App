@@ -15,7 +15,7 @@ def search_button_click():
     release_year = release_year_var.get()
     genre = genre_var.get()
     actors = actors_var.get()
-
+    print(genre)
     table_data = scraper.title_scraper({
         TITLE: title,
         RELEASE_YEAR: release_year,
@@ -90,7 +90,13 @@ release_year_label = ttk.Label(frm, text = 'Year', font=('calibre',10, 'bold')).
 release_year_label = ttk.Entry(frm,textvariable = release_year_var, font=('calibre',10,'normal')).grid(column=3, row=1)
 
 genre_label = ttk.Label(frm, text = 'Genre', font=('calibre',10, 'bold')).grid(column=4, row=1)
-genre_entry = ttk.Entry(frm,textvariable = genre_var, font=('calibre',10,'normal')).grid(column=5, row=1)
+genre_entry = ttk.Combobox(
+    frm,
+    state="readonly",
+    values=GENRES_LIST,
+    textvariable=genre_var
+).grid(column=5, row=1)
+#genre_entry = ttk.Entry(frm,textvariable = genre_var, font=('calibre',10,'normal')).grid(column=5, row=1)
 
 actor_label = ttk.Label(frm, text = 'Actor', font=('calibre',10, 'bold')).grid(column=6, row=1)
 actor_entry = ttk.Entry(frm,textvariable = actors_var, font=('calibre',10,'normal')).grid(column=7, row=1)

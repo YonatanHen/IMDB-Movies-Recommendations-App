@@ -73,4 +73,5 @@ class Scraper:
         actorId = items[0].get("href").split('/')[2]
 
         return actorId
+             
     
