@@ -2,6 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 from manipulateMovieData import manipulateMovieData
 
+'''
+    The Scraper class is responsible for scraping functions and their utility functions
+'''
 class Scraper:
     def __init__(self):
         self.headers = {
@@ -70,5 +73,4 @@ class Scraper:
 
         return actorId
 
-scrpaer = Scraper()
 
