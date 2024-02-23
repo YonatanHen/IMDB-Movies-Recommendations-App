@@ -1,18 +1,14 @@
 from tkinter import *
-from tkinter import ttk, messagebox
+from tkinter import ttk
 from src.scraper import Scraper
 from src.utils.winningMovie import find_winning_movie
-from PIL import Image, ImageTk
 from src.constants import *
-import requests
-import io
+from src.GUI.createTable import create_table
 
 table_data = None
 search_history = {}
 
 def search_button_click():
-    global table_data
-    global search_history
     # Retrieve the values from the entry widgets
     title = title_var.get()
     release_year = release_year_var.get()
@@ -27,46 +23,8 @@ def search_button_click():
     })
 
     winning_movie = find_winning_movie(table_data,search_history)
-    print(f'\n\nwinning movie is {winning_movie}\n\n')
-    
-    tree = ttk.Treeview(root)
 
-    style = ttk.Style()
-    style.configure("Treeview", rowheight=150)
-
-    tree["columns"] = ("title", "year", "actors", "poster")
-
-    tree.images = []
-
-    tree.heading("title", text="Title")
-    tree.heading("year", text="Year")
-    tree.heading("actors", text="Main Actors")
-    tree.heading("#0", text="Poster")
-
-    tree.column("title", width=500)
-    tree.column("year", width=50)
-    tree.column("actors", width=1000)
-    tree.column("#0", width=130)
-
-    for movie in table_data:
-        title = movie['title']
-        year = movie['year']
-        actors = ', '.join(movie['actors']) if movie['actors'] else 'N/A'
-
-        #Fetching and resizing the image
-        image_url = movie['picture_url']
-        response = requests.get(image_url, stream=True, verify=False)
-        image_data = response.content if response.status_code == 200 else b''
-        image = Image.open(io.BytesIO(image_data))
-        image = image.resize((100, 150))
-        photo = ImageTk.PhotoImage(image)
-
-        tree.insert("", "end",values=(title, year, actors), image=photo)
-
-        #GC prevention
-        tree.images.append(photo)
-
-    tree.grid(row=2, column=0, columnspan=10)
+    create_table(root,table_data,winning_movie)
 
     title_var.set("")
     release_year_var.set("")
