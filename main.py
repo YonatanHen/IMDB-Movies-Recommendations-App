@@ -19,19 +19,16 @@ def search_button_click():
     genre = genre_var.get()
     actors = actors_var.get()
     
-    # if title == release_year == genre == actors == "":
-    #     messagebox.showerror('Error', 'Error: you must enter one value at least')
-    #     return
-
     table_data = scraper.title_scraper({
         TITLE: title,
         RELEASE_YEAR: release_year,
         GENRES: genre,
         ACTORS: actors
     })
-    print(table_data)
-    # winning_movie = find_winning_movie(table_data,search_history)
-    # print(f'wiining movie is {winning_movie}')
+
+    winning_movie = find_winning_movie(table_data,search_history)
+    print(f'\n\nwinning movie is {winning_movie}\n\n')
+    
     tree = ttk.Treeview(root)
 
     style = ttk.Style()
