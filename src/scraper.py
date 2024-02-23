@@ -21,10 +21,12 @@ class Scraper:
             role = None
             if filters[ACTORS] != "":
                 role = self.name_scraper(filters['role'])         
-            if RELEASE_YEAR in filters:
+            if filters[RELEASE_YEAR] != "":
                 release_year_filter = filters[RELEASE_YEAR]
                 release_year = f"release_date={release_year_filter}-01-01,{release_year_filter}-12-31"
-                    
+            
+            endpoint = ""
+            
             if release_year:
                 endpoint = "&"+release_year
                 filters.pop(RELEASE_YEAR)
@@ -49,7 +51,7 @@ class Scraper:
 
         BASE_SELECTOR = "sc-f24f1c5c-3"
         items = soup.find_all('div', class_=BASE_SELECTOR)
-
+        print(IMDB_URL+searchFilters)
         manipulated_data = []
         #Most of the info we need is present in the <img> tag.
         for item in items:

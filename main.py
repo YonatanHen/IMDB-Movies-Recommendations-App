@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from src.scraper import Scraper
 from src.utils.winningMovie import find_winning_movie
 from PIL import Image, ImageTk
@@ -18,6 +18,11 @@ def search_button_click():
     release_year = release_year_var.get()
     genre = genre_var.get()
     actors = actors_var.get()
+    
+    # if title == release_year == genre == actors == "":
+    #     messagebox.showerror('Error', 'Error: you must enter one value at least')
+    #     return
+
     table_data = scraper.title_scraper({
         TITLE: title,
         RELEASE_YEAR: release_year,
@@ -25,8 +30,8 @@ def search_button_click():
         ACTORS: actors
     })
     print(table_data)
-    winning_movie = find_winning_movie(table_data,search_history)
-    print(f'wiining movie is {winning_movie}')
+    # winning_movie = find_winning_movie(table_data,search_history)
+    # print(f'wiining movie is {winning_movie}')
     tree = ttk.Treeview(root)
 
     style = ttk.Style()
@@ -67,7 +72,7 @@ def search_button_click():
     tree.grid(row=2, column=0, columnspan=10)
 
     title_var.set("")
-    release_year_var.set(2024)
+    release_year_var.set("")
     genre_var.set("")
     actors_var.set("")
 
@@ -79,7 +84,7 @@ height= root.winfo_screenheight()
 root.geometry("%dx%d" % (width, height))
 
 title_var = StringVar()
-release_year_var = IntVar(value=2024)
+release_year_var = StringVar()
 genre_var = StringVar()
 actors_var = StringVar()
 
