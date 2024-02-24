@@ -35,6 +35,7 @@ def clear_button_click():
 
 root = Tk()
 
+root.title("IMDB Movie Recommendations")
 
 # Create a full screen window
 width= root.winfo_screenwidth()               
