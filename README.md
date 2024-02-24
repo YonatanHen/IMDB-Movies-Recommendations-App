@@ -15,7 +15,7 @@ python3 -m venv <virtual env name>
 2. Source the virtual environment:
 
 ```
-source tondo-task/bin/activate
+source <virtual env name>/bin/activate
 ```
 
 #### Required Packages Installation:
