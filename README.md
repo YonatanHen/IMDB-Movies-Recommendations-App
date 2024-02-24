@@ -1,14 +1,27 @@
 # Tondo-task
 
-Set Up Instructions:
+## Set Up Instructions:
 
-Python version: 3.11.6
-Pip version: 23.2.1
+- Python version: 3.11.6
+- Pip version: 23.2.1
 
-Create a virtual environment:
+### Create a virtual environment:
 
-python3 -m venv tondo-task
+1. You may set up a virtual environment for this project using the command template below:
 
-Source the virtual environment:
+```
+python3 -m venv <virtual env name>
+```
+2. Source the virtual environment:
 
+```
 source tondo-task/bin/activate
+```
+
+### Requirements installation:
+
+All of the requirements are saved under the requirements.txt file. You can install them as follows:
+
+```
+pip3 install -r requirements.txt
+```
