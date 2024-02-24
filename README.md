@@ -78,6 +78,8 @@ python3 main.py
 #### Scenario 4:
 ![image](https://github.com/YonatanHen/Tondo-task/assets/57364867/872552ff-fdc7-4fa4-a21a-90bd34420119)
 
+#### Scenario 5:
+<img width="1238" alt="image" src="https://github.com/YonatanHen/Tondo-task/assets/57364867/09b0fced-eea7-423a-b686-79e209449d92">
 
 ## Side Notes:
 - The Tkinter GUI works a little bit slow on my PC.
