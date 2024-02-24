@@ -5,7 +5,7 @@
 - Python version: 3.11.6
 - Pip version: 23.2.1
 
-### Create a virtual environment:
+#### Create a Virtual Environment:
 
 1. You may set up a virtual environment for this project using the command template below:
 
@@ -18,10 +18,17 @@ python3 -m venv <virtual env name>
 source tondo-task/bin/activate
 ```
 
-### Requirements installation:
+#### Required Packages Installation:
 
 All of the requirements are saved under the requirements.txt file. You can install them as follows:
 
 ```
 pip3 install -r requirements.txt
+```
+
+## Operating Instructions
+
+Please run the project using the command below:
+```
+python3 main.py
 ```
