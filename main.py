@@ -1,76 +1,115 @@
-from tkinter import *
-from tkinter import ttk, messagebox
+from tkinter import ttk, Tk, messagebox, StringVar
 from src.scraper import Scraper
 from src.utils.winningMovie import find_winning_movie
-from src.constants import TITLE, RELEASE_YEAR, GENRES, ACTORS, GENRES_LIST, LABELS_STYLE, ENTRIES_STYLE
 from src.GUI.createTable import create_table
+from src.constants import (
+    TITLE,
+    RELEASE_YEAR,
+    GENRES,
+    ACTORS,
+    GENRES_LIST,
+    LABELS_STYLE,
+    ENTRIES_STYLE,
+)
+
 
 table_data = None
 search_history = {}
 scraper = Scraper()
 
-def search_button_click():
+
+def search_button_click(root, title_var, release_year_var, genre_var, actors_var):
+    """
+    The function triggers the search based on the user's inputs.
+    @param root: The TKinter root object.
+    @param title_var: The text that the user typed for the title input.
+    @param release_year_var: The text that the user typed for the year input.
+    @param genre_var: The genre type that the user set for the genre input.
+    @param genre_var: The text that the user typed for the actor/director input.
+    """
     # Retrieve the values from the entry widgets
     title = title_var.get()
     release_year = release_year_var.get()
     genre = genre_var.get()
     actors = actors_var.get()
-    
-    table_data = scraper.title_scraper({
-        TITLE: title,
-        RELEASE_YEAR: release_year,
-        GENRES: genre,
-        ACTORS: actors
-    })
+
+    table_data = scraper.title_scraper(
+        {TITLE: title, RELEASE_YEAR: release_year, GENRES: genre, ACTORS: actors}
+    )
 
     if table_data != []:
-        winning_movie = find_winning_movie(table_data,search_history)
-        create_table(root,table_data,winning_movie)
+        winning_movie = find_winning_movie(table_data, search_history)
+        create_table(root, table_data, winning_movie)
     else:
-        messagebox.showwarning("Warning!", "No results matching the parameters you specified.")
+        messagebox.showwarning(
+            "Warning!", "No results matching the parameters you specified."
+        )
 
-def clear_button_click():
+
+def clear_button_click(title_var, release_year_var, genre_var, actors_var):
+    """
+    The function clears user inputs
+    @param title_var: The text that the user typed for the title input.
+    @param release_year_var: The text that the user typed for the year input.
+    @param genre_var: The genre type that the user set for the genre input.
+    @param genre_var: The text that the user typed for the actor/director input.
+    """
     title_var.set("")
     release_year_var.set("")
     genre_var.set("")
     actors_var.set("")
 
-root = Tk()
 
-root.title("IMDB Movie Recommendations")
-               
-height= root.winfo_screenheight()               
-root.geometry("%dx%d" % (1250, height))
+def main():
+    root = Tk()
 
-title_var = StringVar()
-release_year_var = StringVar()
-genre_var = StringVar()
-actors_var = StringVar()
+    root.title("IMDB Movie Recommendations")
 
-frm = ttk.Frame(root, padding=15)
-frm.grid()
+    height = root.winfo_screenheight()
+    root.geometry("%dx%d" % (1250, height))
+
+    title_var = StringVar()
+    release_year_var = StringVar()
+    genre_var = StringVar()
+    actors_var = StringVar()
+
+    frm = ttk.Frame(root, padding=15)
+    frm.grid()
+
+    ttk.Label(frm, text="Title:", font=LABELS_STYLE).grid(column=0, row=1)
+    ttk.Entry(frm, textvariable=title_var, font=ENTRIES_STYLE).grid(column=1, row=1)
+
+    ttk.Label(frm, text="Year:", font=LABELS_STYLE).grid(column=2, row=1)
+    ttk.Entry(frm, textvariable=release_year_var, font=ENTRIES_STYLE).grid(
+        column=3, row=1
+    )
+
+    ttk.Label(frm, text="Genre:", font=LABELS_STYLE).grid(column=4, row=1)
+    ttk.Combobox(
+        frm, state="readonly", values=GENRES_LIST, textvariable=genre_var
+    ).grid(column=5, row=1)
+
+    ttk.Label(frm, text="Actor/Director Name:", font=LABELS_STYLE).grid(column=6, row=1)
+    ttk.Entry(frm, textvariable=actors_var, font=ENTRIES_STYLE).grid(column=7, row=1)
+
+    ttk.Button(
+        frm,
+        text="Search",
+        command=lambda: search_button_click(
+            root, title_var, release_year_var, genre_var, actors_var
+        ),
+    ).grid(column=8, row=1)
+    ttk.Button(
+        frm,
+        text="Clear All",
+        command=lambda: clear_button_click(
+            title_var, release_year_var, genre_var, actors_var
+        ),
+    ).grid(column=9, row=1)
+    ttk.Button(frm, text="Quit", command=root.destroy).grid(column=10, row=1)
+
+    root.mainloop()
 
 
-
-title_label = ttk.Label(frm, text = 'Title:', font=LABELS_STYLE).grid(column=0, row=1)
-title_entry = ttk.Entry(frm,textvariable = title_var, font=ENTRIES_STYLE).grid(column=1, row=1)
-
-release_year_label = ttk.Label(frm, text = 'Year:', font=LABELS_STYLE).grid(column=2, row=1)
-release_year_label = ttk.Entry(frm,textvariable = release_year_var, font=ENTRIES_STYLE).grid(column=3, row=1)
-
-genre_label = ttk.Label(frm, text = 'Genre:', font=LABELS_STYLE).grid(column=4, row=1)
-genre_entry = ttk.Combobox(
-    frm,
-    state="readonly",
-    values=GENRES_LIST,
-    textvariable=genre_var
-).grid(column=5, row=1)
-
-actor_label = ttk.Label(frm, text = 'Actor/Director Name:', font=LABELS_STYLE).grid(column=6, row=1)
-actor_entry = ttk.Entry(frm,textvariable = actors_var, font=ENTRIES_STYLE).grid(column=7, row=1)
-
-search_btn = ttk.Button(frm, text="Search", command=search_button_click).grid(column=8, row=1)
-clear_btn = ttk.Button(frm, text="Clear All", command=clear_button_click).grid(column=9, row=1)
-quit_btn = ttk.Button(frm, text="Quit", command=root.destroy).grid(column=10, row=1)
-
-root.mainloop()
+if __name__ == "__main__":
+    main()
