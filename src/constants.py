@@ -1,7 +1,7 @@
 # The constant values below are based on the search parameters in IMDB
 TITLE = "title"
 RELEASE_YEAR = "release_date"
-GENRES = "genres"
+GENRE = "genre"
 ACTORS = "role"
 GENRES_LIST = [
     "",
