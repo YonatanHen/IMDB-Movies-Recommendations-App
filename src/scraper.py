@@ -27,11 +27,11 @@ class Scraper:
         actors = filters[ACTORS]
         if actors != "":
             actors = actors.strip()
-            if ',' in actors:
+            if "," in actors:
                 actors = actors.split(",")
                 role = ""
                 for actor in actors:
-                    role += self.name_scraper(actor)+","
+                    role += self.name_scraper(actor) + ","
                 role = role[:-1]
             else:
                 role = self.name_scraper(filters["role"])
@@ -54,7 +54,6 @@ class Scraper:
             if value != "" and value != None:
                 value = value.replace(" ", "%20")
                 endpoint += "&" + key + "=" + value
-
         return endpoint
 
     def title_scraper(self, filters={}):
@@ -66,7 +65,6 @@ class Scraper:
         """
         # title_type added as we want to filter only the movies
         IMDB_URL = self.IMDB_URL + "search/title/?title_type=feature,tv_movie"
-
         searchFilters = self._create_filters(filters)
         page = requests.get(
             IMDB_URL + searchFilters, headers=self.headers, verify=False
@@ -103,6 +101,8 @@ class Scraper:
 
         BASE_SELECTOR = "ipc-title-link-wrapper"
         items = soup.find_all("a", class_=BASE_SELECTOR)
-        actorId = items[0].get("href").split("/")[2]
-
-        return actorId
+        if items != []:
+            actorId = items[0].get("href").split("/")[2]
+            return actorId
+        else:
+            return ""

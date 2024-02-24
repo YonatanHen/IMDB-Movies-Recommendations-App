@@ -5,7 +5,7 @@ from src.GUI.createTable import create_table
 from src.constants import (
     TITLE,
     RELEASE_YEAR,
-    GENRES,
+    GENRE,
     ACTORS,
     GENRES_LIST,
     LABELS_STYLE,
@@ -34,7 +34,7 @@ def search_button_click(root, title_var, release_year_var, genre_var, actors_var
     actors = actors_var.get()
 
     table_data = scraper.title_scraper(
-        {TITLE: title, RELEASE_YEAR: release_year, GENRES: genre, ACTORS: actors}
+        {TITLE: title, RELEASE_YEAR: release_year, GENRE: genre, ACTORS: actors}
     )
 
     if table_data != []:
