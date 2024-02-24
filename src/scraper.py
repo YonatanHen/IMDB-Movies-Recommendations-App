@@ -79,7 +79,7 @@ class Scraper:
             img_info = item.find("img")
             if img_info != None:
                 picture_url = img_info.get("src")
-                title = item.find("h3").text[3:]
+                title = item.find("h3").text[3:].strip()
                 year = item.find("span").text
                 manipulated_data.append(
                     {"title": title, "year": year, "picture_url": picture_url}
