@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from src.scraper import Scraper
 from src.utils.winningMovie import find_winning_movie
 from src.constants import *
@@ -22,10 +22,12 @@ def search_button_click():
         GENRES: genre,
         ACTORS: actors
     })
-
-    winning_movie = find_winning_movie(table_data,search_history)
-
-    create_table(root,table_data,winning_movie)
+    
+    if table_data != []:
+        winning_movie = find_winning_movie(table_data,search_history)
+        create_table(root,table_data,winning_movie)
+    else:
+        messagebox.showwarning("Warning!", "No results matching the parameters you specified.")
 
 def clear_button_click():
     title_var.set("")
