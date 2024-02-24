@@ -49,11 +49,17 @@ tzdata==2024.1
 urllib3==2.2.1
 ```
 
-## Operating Instructions
+## Operating Instructions:
 
-Please run the project from the project's root folder using the command below:
+Run the project from the project's root folder using the command below:
 ```
 python3 main.py
+```
+
+#### Tests:
+Run the unit test script from the project's root folder as well, using the command below:
+```
+python3 -m unittest tests.py
 ```
 
 ## Screenshots:
