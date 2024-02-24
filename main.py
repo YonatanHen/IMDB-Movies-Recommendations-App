@@ -25,7 +25,7 @@ def search_button_click(root, title_var, release_year_var, genre_var, actors_var
     @param title_var: The text that the user typed for the title input.
     @param release_year_var: The text that the user typed for the year input.
     @param genre_var: The genre type that the user set for the genre input.
-    @param genre_var: The text that the user typed for the actor/director input.
+    @param actors_var: The text that the user typed for the actor/director input.
     """
     # Retrieve the values from the entry widgets
     title = title_var.get()

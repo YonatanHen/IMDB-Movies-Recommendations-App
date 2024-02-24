@@ -24,8 +24,16 @@ class Scraper:
         """
         release_year = None
         role = None
-        if filters[ACTORS] != "":
-            role = self.name_scraper(filters["role"])
+        actors = filters[ACTORS]
+        if actors != "":
+            if ',' in actors:
+                actors = actors.split(",")
+                role = ""
+                for actor in actors:
+                    role += self.name_scraper(actor)+","
+                role = role[:-1]
+            else:
+                role = self.name_scraper(filters["role"])
         if filters[RELEASE_YEAR] != "":
             release_year_filter = filters[RELEASE_YEAR]
             release_year = (
@@ -70,6 +78,7 @@ class Scraper:
         # Most of the info we need is present in the <img> tag.
         for item in items:
             img_info = item.find("img")
+            print(img_info)
             if img_info != None:
                 picture_url = img_info.get("src")
                 title = item.find("h3").text[3:]

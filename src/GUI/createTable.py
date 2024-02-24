@@ -24,7 +24,7 @@ def create_table(root, table_data, winning_movie):
     tree.heading("#2", text="Year")
 
     tree.column("#0", width=150)
-    tree.column("#1", width=400)
+    tree.column("#1", width=500)
     tree.column("#2", width=100)
 
     create_movie_entry(tree, winning_movie, True)
