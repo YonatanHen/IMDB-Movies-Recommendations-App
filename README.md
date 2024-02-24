@@ -28,7 +28,7 @@ pip3 install -r requirements.txt
 
 ## Operating Instructions
 
-Please run the project using the command below:
+Please run the project from the project's root folder using the command below:
 ```
 python3 main.py
 ```
