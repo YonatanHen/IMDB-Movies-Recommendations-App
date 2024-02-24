@@ -26,6 +26,7 @@ class Scraper:
         role = None
         actors = filters[ACTORS]
         if actors != "":
+            actors = actors.strip()
             if ',' in actors:
                 actors = actors.split(",")
                 role = ""
@@ -78,7 +79,6 @@ class Scraper:
         # Most of the info we need is present in the <img> tag.
         for item in items:
             img_info = item.find("img")
-            print(img_info)
             if img_info != None:
                 picture_url = img_info.get("src")
                 title = item.find("h3").text[3:]
