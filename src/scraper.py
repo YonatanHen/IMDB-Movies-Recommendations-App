@@ -62,10 +62,9 @@ class Scraper:
             img_info = item.find('img')            
             if img_info != None:
                 picture_url = img_info.get('src')
-                movie_page_url = item.find('a').get('href')
                 title = item.find('h3').text[3:]
                 year = item.find('span').text
-                manipulated_data.append({"title": title, "year": year, "picture_url": picture_url, "movie_page_url": self.IMDB_URL+movie_page_url[1:]})
+                manipulated_data.append({"title": title, "year": year, "picture_url": picture_url})
         
         return manipulated_data
 

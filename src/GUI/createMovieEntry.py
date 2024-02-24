@@ -23,7 +23,7 @@ def create_movie_entry(tree,movie_data,is_winner):
     tag = WINNER if is_winner else ""
 
     tree.insert("", "end", image=photo, values=(title, year), tags=(tag, ))
-
+    
     #Garbage Collector prevention
     tree.images.append(photo)
 
