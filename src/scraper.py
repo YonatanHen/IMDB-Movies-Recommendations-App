@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 from src.utils.manipulateMovieData import manipulateMovieData
 from .constants import *
 
+requests.packages.urllib3.disable_warnings()
+
 '''
 The Scraper class is responsible for scraping functions and their utility functions
 '''
@@ -41,6 +43,10 @@ class Scraper:
 
             return endpoint
 
+    '''
+    This function scrapes data from https://www.imdb.com/search/title/.
+    The function returns a list of dictionaries in which each dictionary includes movie's information.
+    '''
     def title_scraper(self, filters={}):
         # title_type added as we want to filter only the movies
         IMDB_URL = self.IMDB_URL+"title/?title_type=feature,tv_movie"
@@ -51,7 +57,6 @@ class Scraper:
 
         BASE_SELECTOR = "sc-f24f1c5c-3"
         items = soup.find_all('div', class_=BASE_SELECTOR)
-        print(IMDB_URL+searchFilters)
         manipulated_data = []
         #Most of the info we need is present in the <img> tag.
         for item in items:
@@ -59,11 +64,15 @@ class Scraper:
             if img_info != None:
                 data = img_info.get('alt')
                 picture_url = img_info.get('src')
-                actors,title,year = manipulateMovieData(data)
-                manipulated_data.append({"actors": actors, "title": title, "year": year, "picture_url": picture_url})
+                title,year = manipulateMovieData(data)
+                manipulated_data.append({"title": title, "year": year, "picture_url": picture_url})
         
         return manipulated_data
 
+    '''
+    This function scrapes data from https://www.imdb.com/search/name.
+    The function recievies the actor's name and returns his IMDb ID.
+    '''
     def name_scraper(self, name):
         # title_type added as we want to filter only the movies
         IMDB_URL = self.IMDB_URL+f"name/?name={name}"

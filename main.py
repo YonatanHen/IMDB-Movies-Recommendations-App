@@ -35,6 +35,7 @@ def clear_button_click():
 
 root = Tk()
 
+
 # Create a full screen window
 width= root.winfo_screenwidth()               
 height= root.winfo_screenheight()               
