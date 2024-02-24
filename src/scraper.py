@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from src.utils.manipulateMovieData import manipulateMovieData
 from .constants import *
 
 requests.packages.urllib3.disable_warnings()
@@ -13,7 +12,7 @@ class Scraper:
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'
         }
-        self.IMDB_URL = "https://www.imdb.com/search/"
+        self.IMDB_URL = "https://www.imdb.com/"
 
     '''
     This function create an endpoint with the search parameters entered by the user. 
@@ -49,7 +48,7 @@ class Scraper:
     '''
     def title_scraper(self, filters={}):
         # title_type added as we want to filter only the movies
-        IMDB_URL = self.IMDB_URL+"title/?title_type=feature,tv_movie"
+        IMDB_URL = self.IMDB_URL+"search/title/?title_type=feature,tv_movie"
 
         searchFilters = self._create_filters(filters)
         page = requests.get(IMDB_URL+searchFilters, headers=self.headers, verify=False)
@@ -61,11 +60,12 @@ class Scraper:
         #Most of the info we need is present in the <img> tag.
         for item in items:
             img_info = item.find('img')
+            movie_page_url = item.find('a').get('href')
             if img_info != None:
-                data = img_info.get('alt')
                 picture_url = img_info.get('src')
-                title,year = manipulateMovieData(data)
-                manipulated_data.append({"title": title, "year": year, "picture_url": picture_url})
+                title = item.find('h3').text
+                year = item.find('span').text
+                manipulated_data.append({"title": title, "year": year, "picture_url": picture_url, "movie_page_url": movie_page_url})
         
         return manipulated_data
 
@@ -75,7 +75,7 @@ class Scraper:
     '''
     def name_scraper(self, name):
         # title_type added as we want to filter only the movies
-        IMDB_URL = self.IMDB_URL+f"name/?name={name}"
+        IMDB_URL = self.IMDB_URL+f"search/name/?name={name}"
         page = requests.get(IMDB_URL, headers=self.headers, verify=False)
         soup = BeautifulSoup(page.content, 'html.parser')
 
@@ -84,5 +84,8 @@ class Scraper:
         actorId = items[0].get("href").split('/')[2]
 
         return actorId
+    
+        
+         
              
     

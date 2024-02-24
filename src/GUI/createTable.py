@@ -15,13 +15,13 @@ def create_table(root, table_data,winning_movie):
 
     tree.images = []
 
-    tree.heading("title", text="Title")
-    tree.heading("year", text="Year")
-    tree.heading("#0", text="Poster")
+    tree.heading("#0", anchor='w', text="Poster")
+    tree.heading("title", anchor='w', text="Title")
+    tree.heading("year", anchor='w', text="Year")
 
+    tree.column("#0", width=150, stretch='NO')
     tree.column("title", width=600)
     tree.column("year", width=100)
-    tree.column("#0", width=130)
 
     create_movie_entry(tree, winning_movie, True)
 
