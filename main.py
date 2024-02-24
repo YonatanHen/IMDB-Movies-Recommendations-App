@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk, messagebox
 from src.scraper import Scraper
 from src.utils.winningMovie import find_winning_movie
-from src.constants import *
+from src.constants import TITLE, RELEASE_YEAR, GENRES, ACTORS, GENRES_LIST, LABELS_STYLE, ENTRIES_STYLE
 from src.GUI.createTable import create_table
 
 table_data = None
@@ -22,7 +22,7 @@ def search_button_click():
         GENRES: genre,
         ACTORS: actors
     })
-    
+
     if table_data != []:
         winning_movie = find_winning_movie(table_data,search_history)
         create_table(root,table_data,winning_movie)
@@ -52,23 +52,24 @@ actors_var = StringVar()
 frm = ttk.Frame(root, padding=15)
 frm.grid()
 
-title_label = ttk.Label(frm, text = 'Title:', font=('calibre',10, 'bold')).grid(column=0, row=1)
-title_entry = ttk.Entry(frm,textvariable = title_var, font=('calibre',10,'normal')).grid(column=1, row=1)
 
-release_year_label = ttk.Label(frm, text = 'Year:', font=('calibre',10, 'bold')).grid(column=2, row=1)
-release_year_label = ttk.Entry(frm,textvariable = release_year_var, font=('calibre',10,'normal')).grid(column=3, row=1)
 
-genre_label = ttk.Label(frm, text = 'Genre:', font=('calibre',10, 'bold')).grid(column=4, row=1)
+title_label = ttk.Label(frm, text = 'Title:', font=LABELS_STYLE).grid(column=0, row=1)
+title_entry = ttk.Entry(frm,textvariable = title_var, font=ENTRIES_STYLE).grid(column=1, row=1)
+
+release_year_label = ttk.Label(frm, text = 'Year:', font=LABELS_STYLE).grid(column=2, row=1)
+release_year_label = ttk.Entry(frm,textvariable = release_year_var, font=ENTRIES_STYLE).grid(column=3, row=1)
+
+genre_label = ttk.Label(frm, text = 'Genre:', font=LABELS_STYLE).grid(column=4, row=1)
 genre_entry = ttk.Combobox(
     frm,
     state="readonly",
     values=GENRES_LIST,
     textvariable=genre_var
 ).grid(column=5, row=1)
-#genre_entry = ttk.Entry(frm,textvariable = genre_var, font=('calibre',10,'normal')).grid(column=5, row=1)
 
-actor_label = ttk.Label(frm, text = 'Actor/Director Name:', font=('calibre',10, 'bold')).grid(column=6, row=1)
-actor_entry = ttk.Entry(frm,textvariable = actors_var, font=('calibre',10,'normal')).grid(column=7, row=1)
+actor_label = ttk.Label(frm, text = 'Actor/Director Name:', font=LABELS_STYLE).grid(column=6, row=1)
+actor_entry = ttk.Entry(frm,textvariable = actors_var, font=ENTRIES_STYLE).grid(column=7, row=1)
 
 search_btn = ttk.Button(frm, text="Search", command=search_button_click).grid(column=8, row=1)
 clear_btn = ttk.Button(frm, text="Clear All", command=clear_button_click).grid(column=9, row=1)

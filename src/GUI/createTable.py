@@ -9,6 +9,7 @@ def create_table(root, table_data,winning_movie):
 
     style = ttk.Style()
     style.configure("Treeview", rowheight=150)
+    style.configure("Treeview.Heading", font=('calibre', 14, 'bold'))
 
     tree["columns"] = ("title", "year", "poster")
 
