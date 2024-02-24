@@ -38,11 +38,9 @@ def clear_button_click():
 root = Tk()
 
 root.title("IMDB Movie Recommendations")
-
-# Create a full screen window
-width= root.winfo_screenwidth()               
+               
 height= root.winfo_screenheight()               
-root.geometry("%dx%d" % (width, height))
+root.geometry("%dx%d" % (1250, height))
 
 title_var = StringVar()
 release_year_var = StringVar()

@@ -59,13 +59,13 @@ class Scraper:
         manipulated_data = []
         #Most of the info we need is present in the <img> tag.
         for item in items:
-            img_info = item.find('img')
-            movie_page_url = item.find('a').get('href')
+            img_info = item.find('img')            
             if img_info != None:
                 picture_url = img_info.get('src')
-                title = item.find('h3').text
+                movie_page_url = item.find('a').get('href')
+                title = item.find('h3').text[3:]
                 year = item.find('span').text
-                manipulated_data.append({"title": title, "year": year, "picture_url": picture_url, "movie_page_url": movie_page_url})
+                manipulated_data.append({"title": title, "year": year, "picture_url": picture_url, "movie_page_url": self.IMDB_URL+movie_page_url[1:]})
         
         return manipulated_data
 
@@ -84,7 +84,6 @@ class Scraper:
         actorId = items[0].get("href").split('/')[2]
 
         return actorId
-    
         
          
              
