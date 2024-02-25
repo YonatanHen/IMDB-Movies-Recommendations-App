@@ -59,7 +59,6 @@ def clear_button_click(title_var, release_year_var, genre_var, actors_var):
     genre_var.set("")
     actors_var.set("")
 
-
 def main():
     root = Tk()
 
@@ -72,6 +71,20 @@ def main():
     release_year_var = StringVar()
     genre_var = StringVar()
     actors_var = StringVar()
+    
+    def validate_year_input(*args):
+        """
+        This function validates the year input, and deletes any characters which is not a digit.
+        @param *args: function required arguments
+        """
+        year_val = release_year_var.get()
+        if year_val and not year_val.isdigit():
+            messagebox.showwarning(
+                "Not Allowed!", "Only digits are allowed on the Year entry."
+            )
+            release_year_var.set(year_val[:-1])
+    
+    release_year_var.trace_add('write',validate_year_input)
 
     frm = ttk.Frame(root, padding=15)
     frm.grid()
