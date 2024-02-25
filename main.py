@@ -92,7 +92,7 @@ def main():
         @param *args: callback function required arguments (i.e. var, index, mode).
         """
         actors_val = actors_var.get()
-        pattern  = r"[!@#$%^&*()_+~?\"|\\[\]{}`']"
+        pattern = r"[!@#$%^&*()_+~?\"|\\[\]{}`']"
         if bool(re.search(pattern, actors_val)):
             messagebox.showwarning(
                 "Not Allowed!",
