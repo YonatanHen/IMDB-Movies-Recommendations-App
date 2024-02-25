@@ -75,7 +75,7 @@ def main():
     def validate_year_input(*args):
         """
         This function validates the year input, and deletes any characters which is not a digit.
-        @param *args: function required arguments
+        @param *args: callback function required arguments (i.e. var, index, mode).
         """
         year_val = release_year_var.get()
         if year_val and not year_val.isdigit():
