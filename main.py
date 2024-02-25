@@ -1,4 +1,5 @@
 from tkinter import ttk, Tk, messagebox, StringVar
+import re
 from src.scraper import Scraper
 from src.utils.winningMovie import find_winning_movie
 from src.GUI.createTable import create_table
@@ -59,6 +60,7 @@ def clear_button_click(title_var, release_year_var, genre_var, actors_var):
     genre_var.set("")
     actors_var.set("")
 
+
 def main():
     root = Tk()
 
@@ -71,7 +73,7 @@ def main():
     release_year_var = StringVar()
     genre_var = StringVar()
     actors_var = StringVar()
-    
+
     def validate_year_input(*args):
         """
         This function validates the year input, and deletes any characters which is not a digit.
@@ -83,8 +85,24 @@ def main():
                 "Not Allowed!", "Only digits are allowed on the Year entry."
             )
             release_year_var.set(year_val[:-1])
-    
-    release_year_var.trace_add('write',validate_year_input)
+
+    def validate_actors_input(*args):
+        """
+        This function validates the actors input, and deletes any characters the does not match the pattern.
+        @param *args: callback function required arguments (i.e. var, index, mode).
+        """
+        actors_val = actors_var.get()
+        pattern  = r"[!@#$%^&*()_+~?\"|\\[\]{}`']"
+        if bool(re.search(pattern, actors_val)):
+            messagebox.showwarning(
+                "Not Allowed!",
+                "You can only enter characters or digits (actors/directors name), multiple entries should be split by commas.",
+            )
+            print(actors_val)
+            actors_var.set(actors_val[:-1])
+
+    release_year_var.trace_add("write", validate_year_input)
+    actors_var.trace_add("write", validate_actors_input)
 
     frm = ttk.Frame(root, padding=15)
     frm.grid()
