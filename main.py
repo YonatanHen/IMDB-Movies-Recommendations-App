@@ -98,7 +98,6 @@ def main():
                 "Not Allowed!",
                 "You can only enter characters or digits (actors/directors name), multiple entries should be split by commas.",
             )
-            print(actors_val)
             actors_var.set(actors_val[:-1])
 
     release_year_var.trace_add("write", validate_year_input)
