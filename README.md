@@ -1,4 +1,4 @@
-# Tondo-task
+# IMDB Movies Recommendations App
 
 ## Set Up Instructions:
 
