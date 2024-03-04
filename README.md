@@ -65,24 +65,24 @@ python3 -m unittest tests.py
 ## Screenshots:
 
 #### Scenario 1:
-![image](https://github.com/YonatanHen/Tondo-task/assets/57364867/53346c46-5ba3-47af-97ee-1914458a9ed8)
+![image](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/53346c46-5ba3-47af-97ee-1914458a9ed8)
 
-![image](https://github.com/YonatanHen/Tondo-task/assets/57364867/9741cb02-9568-4829-842d-0de4db99c0f4)
+![image](https://github.com/YonatanHen/[Tondo-task](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/53346c46-5ba3-47af-97ee-1914458a9ed8)/assets/57364867/9741cb02-9568-4829-842d-0de4db99c0f4)
 
-![image](https://github.com/YonatanHen/Tondo-task/assets/57364867/7b32b8b5-4473-4d1f-a4dd-0061a9b1e221)
+![image](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/7b32b8b5-4473-4d1f-a4dd-0061a9b1e221)
 
 #### Scenario 2:
-![image](https://github.com/YonatanHen/Tondo-task/assets/57364867/f2208474-d472-45aa-835e-d8ebc6c2aead)
+![image](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/f2208474-d472-45aa-835e-d8ebc6c2aead)
 
-![image](https://github.com/YonatanHen/Tondo-task/assets/57364867/47b4f216-dcc8-44ba-80d2-75880f2d4e03)
+![image](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/47b4f216-dcc8-44ba-80d2-75880f2d4e03)
 
 #### Scenario 3:
-![image](https://github.com/YonatanHen/Tondo-task/assets/57364867/d247e3a0-05f0-4f9e-90c5-b01ad012d7d0)
+![image](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/d247e3a0-05f0-4f9e-90c5-b01ad012d7d0)
 
-![image](https://github.com/YonatanHen/Tondo-task/assets/57364867/658c1dac-d187-4ccc-a675-3eb07b91e883)
+![image](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/658c1dac-d187-4ccc-a675-3eb07b91e883)
 
 #### Scenario 4:
-![image](https://github.com/YonatanHen/Tondo-task/assets/57364867/872552ff-fdc7-4fa4-a21a-90bd34420119)
+![image](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/872552ff-fdc7-4fa4-a21a-90bd34420119)
 
 #### Scenario 5:
-<img width="1238" alt="image" src="https://github.com/YonatanHen/Tondo-task/assets/57364867/09b0fced-eea7-423a-b686-79e209449d92">
+<img width="1238" alt="image" src="https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/09b0fced-eea7-423a-b686-79e209449d92">
