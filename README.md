@@ -67,8 +67,6 @@ python3 -m unittest tests.py
 #### Scenario 1:
 ![image](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/53346c46-5ba3-47af-97ee-1914458a9ed8)
 
-![image](https://github.com/YonatanHen/[IMDB-Movies-Recommendations-App](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/53346c46-5ba3-47af-97ee-1914458a9ed8)/assets/57364867/9741cb02-9568-4829-842d-0de4db99c0f4)
-
 ![image](https://github.com/YonatanHen/IMDB-Movies-Recommendations-App/assets/57364867/7b32b8b5-4473-4d1f-a4dd-0061a9b1e221)
 
 #### Scenario 2:
