@@ -86,8 +86,3 @@ python3 -m unittest tests.py
 
 #### Scenario 5:
 <img width="1238" alt="image" src="https://github.com/YonatanHen/Tondo-task/assets/57364867/09b0fced-eea7-423a-b686-79e209449d92">
-
-## Side Notes:
-- This Project was built on MacOS (M1 processor).
-- Please reach out to me if any clarifications are required or updates should be done in the project.
-- The search is based on the following URL: https://www.imdb.com/search/title/?title_type=feature,tv_movie (returns only the movies as this is a movie recommendations app).
